@@ -17,6 +17,8 @@ import { CommandPalette } from "@/components/command-palette";
 import { WritingPage } from "@/pages/WritingPage";
 import { Konami } from "@/components/konami";
 import { Analytics } from "@vercel/analytics/react";
+import FakeErrorSplash from "./FakeErrorSplash";
+import EasterEggs from "@/components/easter-eggs";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -89,23 +91,26 @@ export function App() {
           <Analytics />
           <ScrollToTop />
           <Konami />
-          <div className="min-h-screen bg-[var(--bg)] font-sans text-[var(--fg)] antialiased transition-colors duration-300 relative">
-            <Nav onOpenPalette={() => setPaletteOpen(true)} />
-            <SideIndex />
+          <EasterEggs />
+          <FakeErrorSplash delay={4000}>
+            <div className="min-h-screen bg-[var(--bg)] font-sans text-[var(--fg)] antialiased transition-colors duration-300 relative">
+              <Nav onOpenPalette={() => setPaletteOpen(true)} />
+              <SideIndex />
 
-            <main className="relative z-10">
-              <Routes>
-                <Route path="/" element={<MainLayout onOpenPalette={() => setPaletteOpen(true)} />} />
-                <Route path="/projects" element={<Projects isSearchable={true} />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/writing" element={<WritingPage />} />
-              </Routes>
-            </main>
+              <main className="relative z-10">
+                <Routes>
+                  <Route path="/" element={<MainLayout onOpenPalette={() => setPaletteOpen(true)} />} />
+                  <Route path="/projects" element={<Projects isSearchable={true} />} />
+                  <Route path="/experience" element={<Experience />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/writing" element={<WritingPage />} />
+                </Routes>
+              </main>
 
-            <Footer />
-            <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
-          </div>
+              <Footer />
+              <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
+            </div>
+          </FakeErrorSplash>
         </BrowserRouter>
       </VisitorProvider>
     </ThemeProvider>

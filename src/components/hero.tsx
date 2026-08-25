@@ -81,7 +81,7 @@ export function Hero() {
             alt="Banner"
             className="h-full w-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent pointer-events-none" />
         </motion.div>
 
         {/* Profile Avatar & Title Section */}

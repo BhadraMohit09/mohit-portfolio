@@ -28,197 +28,549 @@ export type Post = {
 };
 
 export const site = {
-  name: "Anurag Jha",
-  firstName: "Anurag",
-  url: "https://anuragdotdev.vercel.app",
+  name: "Bhadra Mohit",
+  firstName: "ʇᴉɥoW",
+  url: "https://bhadramohit.vercel.app",
+
   quote: {
-    text: "Simplicity is prerequisite for reliability.",
-    author: "Edsger W. Dijkstra",
+    text: "",
+    author: "",
   },
+
   profileImages: [
-    "/profile.jpg",
-    "/profile2.png",
+    "astronaut.jpeg",
   ],
-  bannerImage: "/images/cover.jpg",
-  socialBannerImage: "/social-banner.png",
-  initials: "AJ",
+
+  bannerImage: "/banner-gradient.jpg",
+  socialBannerImage: "",
+
+  initials: "MB",
+
   role: "Full Stack Developer",
-  location: "Delhi, India",
+
+  location: "Jamnagar, Gujarat, India",
+
   timezone: "Asia/Kolkata",
-  email: "conveytoanurag@gmail.com",
-  greeting: "Hey, I'm Anurag",
-  tagline: "I build clean, modern websites and web apps where design, functionality, and even the smallest details matter.",
+
+  email: "bhadramohit.cloud@gmail.com",
+
+  greeting: "Hey, I'm Mohit",
+
+  tagline:
+    "Crafting exceptional digital experiences with modern technologies, with a focus on scalable architecture, clean code, and great UX.",
+
   about: [
-    "Hey, I'm Anurag, a full stack developer who loves building clean, modern websites and apps where design, functionality, and even the smallest details matter, with a focus on making products that are both practical and visually satisfying.",
-    "I spend most of my time in the terminal, the browser, or scribbling on a whiteboard. I lean backend, not because I don't like frontend, but because I enjoy making polished things actually hold up.",
-    "I don't ship junk. Maintainability isn't optional. And I build best when I'm curious.",
+    "I'm a passionate full-stack developer with a strong foundation in modern web technologies and a keen interest in AI/ML. My journey in technology started with curiosity and has evolved into a professional pursuit of excellence.",
+
+    "With experience spanning the MERN stack, .NET, and Python-based ML solutions, I enjoy turning innovative ideas into elegant, scalable digital solutions that provide real value.",
+
+    "Currently working as a Software Engineer at ZennovaTech, I contribute to enterprise-grade full-stack applications while continuing to explore open-source projects and mentor students at Darshan University.",
   ],
+
   tldr: [
-    "Building products.",
-    "Learning technologies.",
-    "Shipping consistently.",
-    "Obsessed with clean code.",
+    "Building full-stack products.",
+    "Engineering scalable systems.",
+    "Learning AI & ML.",
+    "Mentoring future developers.",
   ],
+
   status: {
     available: true,
     availableText: "open to opportunities",
-    nowLearning: "Backend Engineering • System Design • DSA • DevOps",
-    nowBuilding: "DoodleDash",
-    nowListening: "focus playlists",
+    nowLearning: "System Design • AI/ML • Cloud Engineering • Advanced Backend",
+    nowBuilding: "Enterprise full-stack applications",
+    nowListening: "",
   },
+
   socials: {
-    github: "https://github.com/nodeanurag",
-    twitter: "https://x.com/anuragdotdev",
-    linkedin: "https://linkedin.com/in/nodeanurag",
-    email: "mailto:conveytoanurag@gmail.com",
+    github: "https://github.com/BhadraMohit09",
+    twitter: "",
+    linkedin: "https://linkedin.com/in/bhadramohit27",
+    email: "mailto:bhadramohit.cloud@gmail.com",
     resume: "",
-    discord: "https://discord.gg/ra4kyKdTk",
-    medium: "https://medium.com/@anuragdotdev",
+    discord: "",
+    medium: "",
   },
+
   experience: [
     {
-      company: "Independent Developer",
-      role: "Backend & Full-Stack Developer",
-      period: "2025 – Present",
+      company: "ZennovaTech",
+      role: "Software Engineer",
+      period: "Current Role",
       blurb:
-        "Building and deploying full-stack web applications, SaaS platforms, and backend systems. Working across APIs, authentication, databases, real-time systems, and modern web infrastructure.",
-      url: "",
+        "4 Projects shipped, 100% Typescript, 100+ APIs built, and 700+ commits. Architecting scalable full-stack enterprise applications and delivering high-performance custom web software using the MERN stack and .NET Core.",
+    },
+
+    {
+      company: "Darshan University",
+      role: "Teaching Assistant",
+      period: "June 2024 – Present",
+      blurb:
+        "Mentored 100+ students, conducted 4+ technical workshops, supervised 50+ labs, and maintained a 95% positive feedback rating while guiding students through complex algorithms and web technologies.",
+    },
+
+    {
+      company: "Freelance",
+      role: "Full Stack Developer",
+      period: "2022 – 2023",
+      blurb:
+        "3 projects mixed tech, 20+ APIs, and 500+ commits. Developed responsive web applications, integrating modern frontend libraries with robust backend systems to deliver end-to-end client solutions.",
+    },
+
+    {
+      company: "GitHub Community",
+      role: "Open Source Contributor",
+      period: "2022 – Present",
+      blurb:
+        "Maintained multiple utility repositories and contributed to various open-source projects, accumulating 500+ commits across different projects and helping improve developer tools.",
+      url: "https://github.com/BhadraMohit09",
     },
   ] as Job[],
+
   projects: [
     {
-      title: "FrameLabs",
+      title: "BharatAtlas (IndiaHub)",
+
       blurb:
-        "A creative tool that turns static card generation into a reactive, real-time design experience. Users can switch between retro palettes and layouts on the fly, with zero jank—because every state transition is memoized and component-driven.",
+        "India's largest structured searchable information portal providing instant lookup for 19,000+ PIN codes, 150,000+ IFSC branches, RTO vehicle series, railways, airports, and government schemes.",
+
       story:
-        "The frontend is built with React's compositional model, styled atomically with Tailwind CSS, and powered by Zustand for predictable, lean state management. Icons from lucide-react keep the UI crisp and accessible. The result: a minimal surface area with a maximal creative ceiling.\n\n*Designed for speed • Engineered for feel.*",
-      stack: ["React.js", "Tailwind CSS", "Zustand", "lucide-react"],
+        "A large-scale structured information platform designed to make frequently needed Indian public and geographic information instantly searchable. The platform brings together PIN codes, banking information, RTO vehicle series, railway information, airports, and government schemes into a unified searchable experience.",
+
+      stack: [
+        "Next.js",
+        "Tailwind CSS",
+        "Search API",
+        "Vercel",
+      ],
+
       year: "2026",
+
       links: {
-        live: "https://framelabs.vercel.app/",
-        source: "https://github.com/nodeanurag/FrameLabs",
+        live: "https://onebharat.vercel.app",
       },
+
       featured: true,
-      image: "/project-images/framelabs.png",
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/3581369/pexels-photo-3581369.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend", "Fullstack"],
+    },
+
+    {
+      title: "FileForge",
+
+      blurb:
+        "Universal client-side document and file transformation platform for converting PDFs, processing images, formatting JSON, and generating secure files directly in the browser.",
+
+      story:
+        "A privacy-focused browser-based file transformation platform designed to process files locally. The application focuses on speed, convenience, and privacy by performing core transformations directly on the client.",
+
+      stack: [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Web Workers",
+      ],
+
+      year: "2026",
+
+      links: {
+        live: "https://file-forge-silk.vercel.app/",
+      },
+
+      featured: true,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+
       categories: ["Frontend"],
     },
+
     {
-      title: "DoodleDash",
+      title: "Bharat Grantha",
+
       blurb:
-        "A real-time multiplayer drawing and guessing game (Skribbl.io clone) built as a TypeScript monorepo with absolute dimension-independent drawing synchronization.",
+        "Digital heritage knowledge platform preserving and organizing India's sacred literature with 1,200+ scriptures, 3,400+ Vedic mantras, a temple explorer, and intelligent Granthika AI assistance.",
+
       story:
-        "Engineered using Socket.IO WebSockets for bidirectional event mapping. Features a zero-trust server validation engine (timers, guessing logic, turn loops managed strictly on the server), spectator rooms, and a custom canvas-to-image engine for client-side PNG sharing. Strikethroughs and drawing vectors are normalized to relative coordinates to ensure cross-device consistency.",
-      stack: ["React.js", "Node.js", "Socket.IO", "TypeScript", "Tailwind CSS v4", "Zustand"],
+        "A digital heritage and knowledge platform focused on preserving and organizing India's sacred literature. The platform combines structured content, discovery tools, a temple explorer, and AI-assisted interaction through Granthika.",
+
+      stack: [
+        "Next.js",
+        "Granthika AI",
+        "Clerk Auth",
+        "Tailwind CSS",
+      ],
+
       year: "2026",
+
       links: {
-        live: "https://doodledash.pages.dev/",
-        source: "https://github.com/nodeanurag/DoodleDash",
+        live: "https://granthika.vercel.app",
       },
+
       featured: true,
-      image: "/project-images/doodledash.png",
-      categories: ["Fullstack", "Backend"],
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend", "Fullstack"],
     },
+
     {
-      title: "CodeForge",
+      title: "Time Hub",
+
       blurb:
-        "A local-first browser-based IDE offering full Monaco editing, in-browser code execution for JS/Python/TS, sandboxed previews, and IndexedDB workspace persistence.",
+        "Futuristic multi-functional time utility suite featuring a global World Clock, precision Stopwatch, customizable Countdown Timer, and smart audio Alarm alerts.",
+
       story:
-        "Engineered to run entirely client-side without servers. Integrates Monaco Editor models with dynamic Web Workers and Pyodide runtimes. Features resizable panel split layouts, instant sandboxed iframe live-previews for web files, Dexie-powered IndexedDB database state management, workspace-wide text search, and URL-encoded code snippets sharing.",
-      stack: ["React.js", "Vite", "Zustand", "Monaco Editor", "Pyodide", "Dexie.js"],
+        "A unified time utility experience bringing together multiple everyday time-management tools. The application provides interactive global timezone information alongside stopwatch, countdown, and audio alarm functionality.",
+
+      stack: [
+        "JavaScript",
+        "Tailwind CSS",
+        "Web Audio API",
+        "Vercel",
+      ],
+
       year: "2026",
+
       links: {
-        source: "https://github.com/nodeanurag/codeforge",
+        live: "https://timehubone.vercel.app",
       },
+
       featured: true,
-      status: "In Progress",
-      image: "/project-images/codeforge.png",
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/1198264/pexels-photo-1198264.jpeg?auto=compress&cs=tinysrgb&w=800",
+
       categories: ["Frontend"],
     },
+
     {
-      title: "SwiftPoll",
+      title: "CryptoGuard Toolkit",
+
       blurb:
-        "A real-time anonymous polling application built for maximum creation and voting speed without user registration friction.",
+        "A client-side cybersecurity laboratory for encryption, decryption, and cryptographic hashing using industry-standard algorithms including AES, RSA, SHA-256, and SHA-512.",
+
       story:
-        "Uses Supabase Realtime DB and server actions for lightning-fast voting updates and creator actions. Features browser-stored secret admin tokens for accountless close/delete operations, server-side IP hashing spam de-duplication, full keyboard accessibility, and optimistic client voting counts.",
-      stack: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS v4", "Zod", "Vitest"],
+        "A browser-based cryptography toolkit designed to provide practical utilities for encryption, decryption, and hashing. The application works with established cryptographic algorithms while keeping the experience accessible through a client-side interface.",
+
+      stack: [
+        "Web Crypto API",
+        "JavaScript",
+        "Tailwind CSS",
+        "Security",
+      ],
+
       year: "2026",
+
       links: {
-        source: "https://github.com/nodeanurag/swiftpoll",
+        live: "https://cryptogaurdlab.vercel.app",
       },
-      featured: false,
-      status: "In Progress",
-      image: "/project-images/swiftpoll.png",
-      categories: ["Fullstack"],
+
+      featured: true,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
     },
+
     {
-      title: "Nexus",
+      title: "Finance Calculator",
+
       blurb:
-        "A workspace-based project management app featuring kanban boards, real-time activity tracking, nodemailer notifications, and robust team collaboration.",
+        "Comprehensive financial calculator covering EMI, SIP, compound interest, and loan amortization, built for clean, mobile-friendly financial planning.",
+
       story:
-        "Built to mimic enterprise collaboration canvases. Employs Next-Auth for role-based authentication, TanStack Query for caching and server synchronization, Recharts for team productivity insights, and @dnd-kit for seamless drag-and-drop workflow task transitions. Backed by a clean PostgreSQL database schema via Prisma.",
-      stack: ["Next.js", "Prisma", "PostgreSQL", "React Query", "@dnd-kit", "Next-Auth"],
+        "A practical financial planning tool combining multiple commonly required calculations into a single clean interface. It supports EMI, SIP, compound interest, and loan amortization calculations with a mobile-friendly experience.",
+
+      stack: [
+        "React",
+        "Vercel",
+        "Tailwind CSS",
+      ],
+
       year: "2026",
+
       links: {
-        source: "https://github.com/nodeanurag/nexus",
+        live: "https://fin-calc-delta.vercel.app/",
       },
+
+      featured: true,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
+    },
+
+    {
+      title: "MAB Converter",
+
+      blurb:
+        "Modern converter for number-system and unit conversions with a keyboard-friendly interface, precision settings, and full accessibility support.",
+
+      stack: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vercel",
+      ],
+
+      year: "2026",
+
+      links: {
+        live: "https://mab-converter-beta.vercel.app/",
+      },
+
       featured: false,
-      status: "In Progress",
-      image: "/project-images/nexus.png",
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
+    },
+
+    {
+      title: "GST Calculator",
+
+      blurb:
+        "A clean, fast GST calculation tool tailored for Indian businesses, supporting 5%, 12%, 18%, and 28% tax slabs with inclusive and exclusive calculation modes.",
+
+      stack: [
+        "Vanilla JS",
+        "HTML5",
+        "CSS3",
+        "Cloudflare Pages",
+      ],
+
+      year: "2026",
+
+      links: {
+        live: "https://gst-calculator-76b.pages.dev/",
+      },
+
+      featured: false,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
+    },
+
+    {
+      title: "AssessEdge360",
+
+      blurb:
+        "Enterprise-grade placement examination platform with timed assessments, automated grading, comprehensive analytics, and real-time monitoring.",
+
+      story:
+        "A full-stack assessment platform designed for placement examinations. The system combines timed assessments, automated grading, analytics, and real-time monitoring into an enterprise-oriented workflow.",
+
+      stack: [
+        "MERN Stack",
+        "WebSockets",
+        "JWT",
+        "Redis",
+        "Docker",
+      ],
+
+      year: "2026",
+
+      links: {
+        source:
+          "https://github.com/BhadraMohit09/AssessEdge360",
+      },
+
+      featured: true,
+      status: "In Development",
+
+      image:
+        "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800",
+
       categories: ["Fullstack", "Backend"],
+    },
+
+    {
+      title: "Crop Analysis ML Pipeline",
+
+      blurb:
+        "Machine learning pipeline for agricultural data analysis with a Flask API, Docker deployment, PostgreSQL integration, and real-time predictions.",
+
+      story:
+        "A predictive agricultural system designed to analyze crop-related data and provide real-time predictions. The project combines machine learning with a Flask API, Docker deployment, and PostgreSQL.",
+
+      stack: [
+        "Python",
+        "Flask",
+        "Scikit-learn",
+        "Docker",
+        "PostgreSQL",
+      ],
+
+      year: "2026",
+
+      links: {
+        source:
+          "https://github.com/BhadraMohit09/Crop_Analysis_with_Flask_API",
+      },
+
+      featured: false,
+      status: "Open Source",
+
+      image:
+        "https://images.pexels.com/photos/1447238/pexels-photo-1447238.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Backend", "Fullstack"],
+    },
+
+    {
+      title: "MAB Universal Converter",
+
+      blurb:
+        "Single interface for converting units, formats, and encodings, optimized for low-bandwidth environments with progressive enhancement.",
+
+      stack: [
+        "Vanilla JS",
+        "HTML5",
+        "CSS3",
+        "PWA",
+      ],
+
+      year: "2026",
+
+      links: {
+        live:
+          "https://mab-universal-converter-beta.netlify.app/",
+      },
+
+      featured: false,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
+    },
+
+    {
+      title: "MAB Translator",
+
+      blurb:
+        "Advanced translation application with real-time language detection, quick-copy functionality, and multiple download formats.",
+
+      stack: [
+        "React",
+        "i18n",
+        "REST API",
+        "Material-UI",
+      ],
+
+      year: "2026",
+
+      links: {
+        live:
+          "https://mab-translator-seven.vercel.app/",
+      },
+
+      featured: false,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
+    },
+
+    {
+      title: "Portfolio Website",
+
+      blurb:
+        "Modern responsive portfolio website built with React and Tailwind CSS, featuring smooth animations, PWA support, and optimized performance.",
+
+      stack: [
+        "React",
+        "Tailwind CSS",
+        "Vite",
+        "PWA",
+      ],
+
+      year: "2026",
+
+      links: {
+        live: "https://bhadramohit.vercel.app/",
+      },
+
+      featured: false,
+      status: "Live",
+
+      image:
+        "https://images.pexels.com/photos/3184465/pexels-photo/3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+
+      categories: ["Frontend"],
     },
   ] as Project[],
+
   skills: [
+    "React",
+    "Node.js",
     "TypeScript",
     "JavaScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "Tailwind CSS",
-    "Shadcn UI",
-    "PostgreSQL",
+    ".NET Core",
+    "C#",
+    "Python",
+    "Machine Learning",
     "MongoDB",
-    "Prisma",
-    "Supabase",
-    "Firebase",
+    "PostgreSQL",
+    "SQL Server",
+    "Next.js",
+    "Express.js",
+    "ASP.NET Core",
     "REST APIs",
+    "WebSockets",
     "JWT",
+    "OAuth2",
+    "Redis",
+    "Docker",
+    "AWS",
+    "Vite",
+    "Tailwind CSS",
+    "Framer Motion",
+    "PWA",
+    "GraphQL",
     "Git",
     "GitHub",
-    "Postman",
-    "Vercel",
+    "GitHub Actions",
     "Figma",
-    "C++",
-    "Python",
+    "Postman",
+    "Linux",
+    "Nginx",
+    "Web Workers",
+    "Web Crypto API",
+    "Scikit-learn",
+    "Flask",
+    "Redux",
   ],
-  writing: [
-    {
-      title: "Understanding HTTP: The Backbone of the Web",
-      summary: "A deep dive into the Hypertext Transfer Protocol, exploring header lifecycle, request methods, statelessness, and connection optimization from HTTP/1.1 to HTTP/3.",
-      date: "Aug 22, 2026",
-      readingTime: "15 min read",
-      url: "https://medium.com/@anuragdotdev/understanding-http-the-backbone-of-the-web-3d2109d0facd",
-    },
-    {
-      title: "API Rate Limiting: I thought it was just counting requests...",
-      summary: "An analysis of rate limiting algorithms from Token Bucket to Sliding Window logs, detailing how distributed systems protect API infrastructure under load.",
-      date: "Jul 12, 2026",
-      readingTime: "14 min read",
-      url: "https://medium.com/@anuragdotdev/api-rate-limiting-i-thought-it-was-just-counting-requests-682cefa2f56c",
-    },
-    {
-      title: "The JWT Storage Debate is Over: Here's the Production-Grade Architecture Your App Actually Needs",
-      summary: "A definitive guide to JWT storage in frontend applications, detailing why standard localStorage fails and how to implement secure memory-session architecture with HTTP-only cookies.",
-      date: "Jun 24, 2026",
-      readingTime: "8 min read",
-      url: "https://medium.com/@anuragdotdev/the-jwt-storage-debate-is-over-heres-the-production-grade-architecture-your-app-actually-needs-9ab284da065f",
-    }
-  ] as Post[],
+
+  writing: [] as Post[],
+
   github: {
-    username: "nodeanurag",
+    username: "BhadraMohit09",
     contributionsLastYear: "500+",
   },
-  footerNote: "Built with ❤️ and hardwork"
+
+  footerNote: "Built with ❤️ and hardwork",
 } as const;
 
 export type Site = typeof site;
