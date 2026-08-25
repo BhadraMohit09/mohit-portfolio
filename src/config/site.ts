@@ -38,7 +38,7 @@ export const site = {
   },
 
   profileImages: [
-    "astronaut.jpeg",
+    "/astronaut.jpeg",
   ],
 
   bannerImage: "/banner-gradient.jpg",

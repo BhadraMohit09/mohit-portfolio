@@ -4,14 +4,24 @@ import { motion } from "framer-motion";
 import { site } from "@/config/site";
 import { Socials } from "./socials";
 import { RotateCw, ArrowRight } from "lucide-react";
+import confetti from "canvas-confetti";
 
 export function Hero() {
   const [imgIndex, setImgIndex] = useState(0);
+  const [rotation, setRotation] = useState(0);
 
   const handleNextImage = () => {
     const nextIndex = (imgIndex + 1) % site.profileImages.length;
     setImgIndex(nextIndex);
+    setRotation(prev => prev + 360);
     window.dispatchEvent(new CustomEvent("profileImageChanged", { detail: nextIndex }));
+    
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#8b5cf6', '#d946ef', '#f97316']
+    });
   };
 
   const roles = [
@@ -109,7 +119,12 @@ export function Hero() {
                 className="absolute right-1 top-1 rounded-full border border-neutral-700 bg-neutral-900/90 p-1.5 text-neutral-300 transition-all hover:text-white hover:scale-110 sm:opacity-100 opacity-0 group-hover:opacity-100 z-20 cursor-pointer shadow-md"
                 aria-label="Switch profile image"
               >
-                <RotateCw size={12} strokeWidth={2} />
+                <motion.div
+                  animate={{ rotate: rotation }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                >
+                  <RotateCw size={12} strokeWidth={2} />
+                </motion.div>
               </button>
             </motion.div>
 
