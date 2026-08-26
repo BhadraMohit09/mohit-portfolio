@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 import { Shell, SectionHeader } from "@/components/Layout";
 import { useGithubHeatmap } from "@/hooks/useGithubHeatmap";
 import { site } from "@/config/site";
@@ -33,7 +34,13 @@ export function GithubActivity() {
         }
       />
       <Shell className="px-6 py-6 sm:px-8">
-        <div className="onyx-scroll overflow-x-auto pb-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="onyx-scroll overflow-x-auto pb-2"
+        >
           <div className="min-w-[640px]">
             {/* Month labels at the top */}
             <div className="mb-1.5 flex justify-between pr-8 font-mono text-[10px] text-[var(--soft)]">
@@ -48,10 +55,13 @@ export function GithubActivity() {
                 lvl === null ? (
                   <span key={i} className="size-[10px]" />
                 ) : (
-                  <span
+                  <motion.span
                     key={i}
                     className="size-[10px] rounded-[2px] bg-[var(--fg)] transition-transform duration-150 hover:scale-125"
                     style={{ opacity: HEAT_OPACITY[lvl] }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: HEAT_OPACITY[lvl], scale: 1 }}
+                    transition={{ delay: i * 0.001, duration: 0.3, ease: "easeOut" }}
                   />
                 ),
               )}
@@ -71,7 +81,7 @@ export function GithubActivity() {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Shell>
     </div>
   );

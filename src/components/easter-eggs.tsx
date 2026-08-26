@@ -968,19 +968,19 @@ const EasterEggs = () => {
         </div>
       )}
 
-      {/* Floating Secret Terminal Trigger */}
+      {/* Floating Secret Terminal Trigger — bottom-right, above scroll-progress */}
 
-      <div className="fixed bottom-6 left-6 z-40">
+      <div className="fixed bottom-6 right-6 z-40">
         <button
           type="button"
           onClick={() => setIsTerminalOpen(true)}
-          className="group relative flex items-center gap-3 bg-slate-900/90 hover:bg-slate-800 border border-purple-500/30 px-5 py-3 rounded-full shadow-lg shadow-purple-500/20 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-purple-400"
+          className="group relative flex items-center gap-2 bg-slate-900/80 hover:bg-slate-800 border border-purple-500/20 hover:border-purple-400/60 px-3 py-2 rounded-full shadow-lg shadow-purple-500/10 backdrop-blur-md transition-all duration-300 hover:scale-105"
           title="Secret Terminal Console"
         >
-          <Terminal className="w-5 h-5 animate-pulse text-green-400" />
+          <Terminal className="w-4 h-4 text-green-400/70 group-hover:text-green-400 transition-colors" />
 
-          <span className="text-xs font-mono font-bold tracking-wider text-gray-300 group-hover:text-white uppercase hidden md:block">
-            Sys_Terminal
+          <span className="text-[10px] font-mono font-bold tracking-wider text-gray-400 group-hover:text-white uppercase hidden md:block opacity-0 group-hover:opacity-100 transition-opacity max-w-0 group-hover:max-w-[80px] overflow-hidden duration-300">
+            Terminal
           </span>
         </button>
       </div>

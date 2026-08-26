@@ -33,16 +33,18 @@ export const site = {
   url: "https://bhadramohit.vercel.app",
 
   quote: {
-    text: "",
-    author: "",
+    text: "The best error message is the one that never shows up.",
+    author: "Thomas Fuchs",
   },
 
   profileImages: [
     "/astronaut.jpeg",
+    "/profile.jpg",
+    "/profile2.png",
   ],
 
   bannerImage: "/banner-gradient.jpg",
-  socialBannerImage: "",
+  socialBannerImage: "/social-banner.png",
 
   initials: "MB",
 
@@ -79,24 +81,24 @@ export const site = {
     availableText: "open to opportunities",
     nowLearning: "System Design • AI/ML • Cloud Engineering • Advanced Backend",
     nowBuilding: "Enterprise full-stack applications",
-    nowListening: "",
+    nowListening: "Lo-fi Beats to Code To",
   },
 
   socials: {
     github: "https://github.com/BhadraMohit09",
-    twitter: "",
+    twitter: "https://twitter.com/bhadramohit",
     linkedin: "https://linkedin.com/in/bhadramohit27",
     email: "mailto:bhadramohit.cloud@gmail.com",
-    resume: "",
+    resume: "https://drive.google.com/file/d/1SFpT-uKNYLKKw1pwJnoLP3XZKFhdgTDo/view?usp=sharing",
     discord: "",
-    medium: "",
+    medium: "https://medium.com/@bhadramohit.cloud",
   },
 
   experience: [
     {
       company: "ZennovaTech",
       role: "Software Engineer",
-      period: "Current Role",
+      period: "Jan 2025 – Present",
       blurb:
         "4 Projects shipped, 100% Typescript, 100+ APIs built, and 700+ commits. Architecting scalable full-stack enterprise applications and delivering high-performance custom web software using the MERN stack and .NET Core.",
     },
@@ -154,7 +156,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/3581369/pexels-photo-3581369.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend", "Fullstack"],
     },
@@ -185,7 +187,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -216,7 +218,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend", "Fullstack"],
     },
@@ -247,7 +249,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/1198264/pexels-photo-1198264.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -278,7 +280,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -308,7 +310,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -336,7 +338,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -364,7 +366,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -397,7 +399,7 @@ export const site = {
       status: "In Development",
 
       image:
-        "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Fullstack", "Backend"],
     },
@@ -430,7 +432,7 @@ export const site = {
       status: "Open Source",
 
       image:
-        "https://images.pexels.com/photos/1447238/pexels-photo-1447238.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Backend", "Fullstack"],
     },
@@ -459,7 +461,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -488,7 +490,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -516,7 +518,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.pexels.com/photos/3184465/pexels-photo/3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -563,7 +565,32 @@ export const site = {
     "Redux",
   ],
 
-  writing: [] as Post[],
+  writing: [
+    {
+      title: "Building Scalable MERN Stack Apps: Lessons from Production",
+      summary:
+        "What I learned shipping 4 production-grade MERN apps at ZennovaTech — from schema design to Redis caching strategies that cut response times by 60%.",
+      date: "Aug 2026",
+      url: "https://medium.com/@bhadramohit.cloud",
+      readingTime: "7 min read",
+    },
+    {
+      title: "TypeScript Patterns I Wish I Knew Earlier",
+      summary:
+        "Practical TypeScript patterns for building maintainable APIs — discriminated unions, branded types, and utility types that removed hundreds of runtime bugs.",
+      date: "Jul 2026",
+      url: "https://medium.com/@bhadramohit.cloud",
+      readingTime: "5 min read",
+    },
+    {
+      title: "Client-Side Cryptography with the Web Crypto API",
+      summary:
+        "A deep dive into implementing AES-GCM and RSA-OAEP encryption entirely in the browser with zero server dependencies — how I built CryptoGuard Toolkit.",
+      date: "Jun 2026",
+      url: "https://medium.com/@bhadramohit.cloud",
+      readingTime: "6 min read",
+    },
+  ] as Post[],
 
   github: {
     username: "BhadraMohit09",
@@ -573,4 +600,4 @@ export const site = {
   footerNote: "Built with ❤️ and hardwork",
 } as const;
 
-export type Site = typeof site;
+export type Site = typeof site;

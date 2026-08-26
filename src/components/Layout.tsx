@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export function Shell({
   children,
@@ -24,7 +25,14 @@ export function SectionHeader({
   id?: string;
 }) {
   return (
-    <div id={id} className="relative w-full border-y border-[var(--line)] bg-stripes">
+    <motion.div
+      id={id}
+      initial={{ opacity: 0, y: -8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full border-y border-[var(--line)] bg-stripes"
+    >
       {/* 2px Crosshair Dot Anchors at Grid Intersections */}
       <span className="absolute top-0 left-0 h-[3px] w-[3px] -translate-x-1/2 -translate-y-1/2 bg-[var(--fg)] opacity-40 z-20" />
       <span className="absolute top-0 right-0 h-[3px] w-[3px] translate-x-1/2 -translate-y-1/2 bg-[var(--fg)] opacity-40 z-20" />
@@ -37,7 +45,7 @@ export function SectionHeader({
         </h2>
         {aside}
       </Shell>
-    </div>
+    </motion.div>
   );
 }
 

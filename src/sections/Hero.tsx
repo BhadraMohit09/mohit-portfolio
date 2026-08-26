@@ -116,6 +116,20 @@ export function Hero({ onOpenPalette }: { onOpenPalette?: () => void }) {
                   <span>{isLoading ? "..." : count?.toLocaleString()} views</span>
                 </span>
               </p>
+              {/* Tagline */}
+              <p className="mt-2 max-w-xs text-[12px] leading-relaxed text-[var(--soft)] hidden sm:block">
+                {site.tagline}
+              </p>
+              {/* Availability badge */}
+              {site.status.available && (
+                <span className="mt-2 inline-flex items-center gap-1.5 font-mono text-[11px] text-emerald-500">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+                  </span>
+                  {site.status.availableText}
+                </span>
+              )}
             </div>
           </div>
 

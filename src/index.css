@@ -137,6 +137,8 @@ body, header, main, div, span, p, h1, h2, h3, a, button, input {
 
 html {
   scroll-behavior: smooth;
+  /* Offset for sticky nav (~48px) so anchored sections don't hide behind it */
+  scroll-padding-top: 56px;
   font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--fg);
@@ -152,6 +154,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Prevent rubber-band scroll overshooting */
+  overscroll-behavior-y: none;
 }
 
 .font-serif {
@@ -208,7 +212,128 @@ body {
   animation: scanline 8s linear infinite;
 }
 
+/* Grid utility for GitHub heatmap */
 .grid-rows-7 {
   grid-template-rows: repeat(7, minmax(0, 1fr));
 }
 
+/* ------------------------------------------------------------------ */
+/*  Premium Section Reveal Animations                                  */
+/* ------------------------------------------------------------------ */
+
+/* Fade-up reveal — used by framer-motion whileInView */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-in with slight scale */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Slide-in from left for section headers */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger delays for child elements */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* ------------------------------------------------------------------ */
+/*  Scroll margin for sections (accounts for sticky nav height)        */
+/* ------------------------------------------------------------------ */
+
+#about,
+#contact,
+#projects,
+#experience,
+#skills,
+#writing,
+#github {
+  scroll-margin-top: 56px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Subtle ambient gradient background pulse on section enter          */
+/* ------------------------------------------------------------------ */
+
+@keyframes ambientGlow {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: 1; }
+}
+
+.section-glow::before {
+  content: "";
+  position: absolute;
+  inset: -60px 20% -60px 20%;
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  animation: ambientGlow 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Lenis scroll override — ensure Lenis controls body scroll          */
+/* ------------------------------------------------------------------ */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Barrel Roll Easter Egg                                              */
+/* ------------------------------------------------------------------ */
+
+@keyframes barrelRoll {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-barrel-roll {
+  animation: barrelRoll 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}

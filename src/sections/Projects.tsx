@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Shell, SectionHeader } from "@/components/Layout";
 import { site } from "@/config/site";
 import { ProjectCard } from "./ProjectCard";
-import { Search, X } from "lucide-react";
+import { Search, X, ArrowRight } from "lucide-react";
 
 export function Projects({ isSearchable = false }: { isSearchable?: boolean }) {
   const [projectTab, setProjectTab] = useState<string>("All");
@@ -11,6 +11,9 @@ export function Projects({ isSearchable = false }: { isSearchable?: boolean }) {
 
   const displayedProjects = useMemo(() => {
     return site.projects.filter((p) => {
+      // On homepage, only show featured projects
+      if (!isSearchable && !p.featured) return false;
+
       // Category filter
       if (projectTab === "Frontend" && !p.categories?.includes("Frontend")) return false;
       if (projectTab === "Backend" && !p.categories?.includes("Backend")) return false;
@@ -115,6 +118,19 @@ export function Projects({ isSearchable = false }: { isSearchable?: boolean }) {
         {displayedProjects.length === 0 && (
           <div className="py-12 text-center text-[var(--muted)] text-[13.5px] font-mono">
             No projects match your current filter.
+          </div>
+        )}
+
+        {/* View All link — homepage only */}
+        {!isSearchable && (
+          <div className="mt-6 text-center">
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-2 font-mono text-[12px] text-[var(--muted)] hover:text-[var(--fg)] border border-[var(--line)] rounded-lg px-4 py-2 transition-colors hover:bg-[var(--hover)]"
+            >
+              View all {site.projects.length} projects
+              <ArrowRight className="size-3.5" />
+            </a>
           </div>
         )}
       </Shell>

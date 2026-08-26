@@ -19,17 +19,19 @@ import { Konami } from "@/components/konami";
 import { Analytics } from "@vercel/analytics/react";
 import FakeErrorSplash from "./FakeErrorSplash";
 import EasterEggs from "@/components/easter-eggs";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { ScrollToTop as ScrollTopButton } from "@/components/scroll-to-top";
+import { useLenis } from "@/hooks/useLenis";
 
-function ScrollToTop() {
+/* ── Route-change scroll reset ─────────────────────────────────── */
+function RouteScrollReset() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (hash) {
       const id = hash.replace("#", "");
       const element = document.getElementById(id);
       if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
         return;
       }
     }
@@ -38,6 +40,13 @@ function ScrollToTop() {
   return null;
 }
 
+/* ── Lenis initializer (runs inside BrowserRouter context) ─────── */
+function SmoothScrollInit() {
+  useLenis();
+  return null;
+}
+
+/* ── Main homepage layout ──────────────────────────────────────── */
 function MainLayout({ onOpenPalette }: { onOpenPalette: () => void }) {
   return (
     <>
@@ -53,6 +62,7 @@ function MainLayout({ onOpenPalette }: { onOpenPalette: () => void }) {
   );
 }
 
+/* ── App root ──────────────────────────────────────────────────── */
 export function App() {
   const [paletteOpen, setPaletteOpen] = useState(false);
 
@@ -88,10 +98,17 @@ export function App() {
     <ThemeProvider>
       <VisitorProvider>
         <BrowserRouter>
+          {/* Smooth scroll engine */}
+          <SmoothScrollInit />
+
           <Analytics />
-          <ScrollToTop />
+          <RouteScrollReset />
           <Konami />
           <EasterEggs />
+
+          {/* Top progress bar */}
+          <ScrollProgress />
+
           <FakeErrorSplash delay={4000}>
             <div className="min-h-screen bg-[var(--bg)] font-sans text-[var(--fg)] antialiased transition-colors duration-300 relative">
               <Nav onOpenPalette={() => setPaletteOpen(true)} />
@@ -111,6 +128,9 @@ export function App() {
               <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
             </div>
           </FakeErrorSplash>
+
+          {/* Scroll-to-top FAB (above terminal button) */}
+          <ScrollTopButton />
         </BrowserRouter>
       </VisitorProvider>
     </ThemeProvider>
