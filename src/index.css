@@ -142,7 +142,7 @@ html {
   font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--fg);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -153,7 +153,7 @@ body {
   text-rendering: optimizeLegibility;
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   /* Prevent rubber-band scroll overshooting */
   overscroll-behavior-y: none;
 }
