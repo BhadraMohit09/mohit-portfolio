@@ -1,11 +1,54 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Shell, SectionHeader } from "@/components/Layout";
-import { site } from "@/config/site";
+import { site, Post } from "@/config/site";
 import { ArrowUpRight } from "lucide-react";
 import { MediumIcon } from "@/components/icons";
 
 export function Writing() {
-  if (!site.writing || site.writing.length === 0) return null;
+  const [posts, setPosts] = useState<Post[]>(site.writing || []);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@bhadramohit.cloud");
+        const data = await response.json();
+        if (data.status === "ok" && data.items) {
+          const fetchedPosts = data.items.map((item: any) => {
+            const textContent = item.content.replace(/<[^>]+>/g, '');
+            const wordCount = textContent.split(/\s+/).length;
+            const readingTime = Math.max(1, Math.ceil(wordCount / 200)) + " min read";
+            
+            let summary = item.description.replace(/<[^>]+>/g, '').trim();
+            if (summary.length > 150) {
+              summary = summary.substring(0, 150) + "...";
+            }
+            
+            const dateObj = new Date(item.pubDate);
+            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            
+            return {
+              title: item.title,
+              summary: summary,
+              date: dateStr,
+              url: item.link,
+              readingTime: readingTime,
+            };
+          });
+          setPosts(fetchedPosts);
+        }
+      } catch (error) {
+        console.error("Error fetching Medium posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchPosts();
+  }, []);
+
+  if (!loading && (!posts || posts.length === 0)) return null;
 
   return (
     <div id="writing">
@@ -26,9 +69,9 @@ export function Writing() {
       />
       <Shell>
         <div className="divide-y divide-[var(--line)]">
-          {site.writing.map((post, i) => (
+          {posts.map((post, i) => (
             <motion.a
-              key={post.title}
+              key={post.url}
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
