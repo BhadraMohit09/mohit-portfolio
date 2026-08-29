@@ -1,6 +1,6 @@
 import { Shell, SectionHeader } from "@/components/Layout";
 import { site } from "@/config/site";
-import { GitHubIcon, TwitterIcon, LinkedInIcon, MailIcon, FileIcon, MediumIcon } from "@/components/icons";
+import { GitHubIcon, TwitterIcon, LinkedInIcon, MailIcon, FileIcon, MediumIcon, DevToIcon, KaggleIcon } from "@/components/icons";
 import { ArrowUpRight } from "lucide-react";
 
 export function Contact() {
@@ -9,6 +9,8 @@ export function Contact() {
     { label: "LinkedIn", href: site.socials.linkedin, Icon: LinkedInIcon },
     { label: "Twitter", href: site.socials.twitter, Icon: TwitterIcon },
     { label: "Medium", href: site.socials.medium, Icon: MediumIcon },
+    { label: "Dev.to", href: site.socials.devto, Icon: DevToIcon },
+    { label: "Kaggle", href: site.socials.kaggle, Icon: KaggleIcon },
     { label: "Mail", href: site.socials.email || `mailto:${site.email}`, Icon: MailIcon },
     { label: "Resume", href: site.socials.resume, Icon: FileIcon },
   ].filter((l) => Boolean(l.href));

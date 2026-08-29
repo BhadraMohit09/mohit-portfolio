@@ -92,6 +92,8 @@ export const site = {
     resume: "https://drive.google.com/file/d/1SFpT-uKNYLKKw1pwJnoLP3XZKFhdgTDo/view?usp=sharing",
     discord: "",
     medium: "https://medium.com/@bhadramohit.cloud",
+    devto: "https://dev.to/bhadramohit",
+    kaggle: "https://www.kaggle.com/bhadramohit",
   },
 
   experience: [
