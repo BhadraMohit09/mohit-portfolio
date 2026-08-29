@@ -12,34 +12,77 @@ export function Writing() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@bhadramohit.cloud");
-        const data = await response.json();
-        if (data.status === "ok" && data.items) {
-          const fetchedPosts = data.items.map((item: any) => {
-            const textContent = item.content.replace(/<[^>]+>/g, '');
-            const wordCount = textContent.split(/\s+/).length;
-            const readingTime = Math.max(1, Math.ceil(wordCount / 200)) + " min read";
-            
-            let summary = item.description.replace(/<[^>]+>/g, '').trim();
-            if (summary.length > 150) {
-              summary = summary.substring(0, 150) + "...";
-            }
-            
-            const dateObj = new Date(item.pubDate);
-            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-            
-            return {
-              title: item.title,
-              summary: summary,
-              date: dateStr,
-              url: item.link,
-              readingTime: readingTime,
-            };
-          });
-          setPosts(fetchedPosts);
+        const [mediumRes, devtoRes] = await Promise.all([
+          fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@bhadramohit.cloud").catch(() => null),
+          fetch("https://dev.to/api/articles?username=bhadramohit").catch(() => null)
+        ]);
+
+        let allPosts: any[] = [];
+
+        if (mediumRes && mediumRes.ok) {
+          const mediumData = await mediumRes.json();
+          if (mediumData.status === "ok" && mediumData.items) {
+            const mediumPosts = mediumData.items.map((item: any) => {
+              const textContent = item.content.replace(/<[^>]+>/g, '');
+              const wordCount = textContent.split(/\s+/).length;
+              const readingTime = Math.max(1, Math.ceil(wordCount / 200)) + " min read";
+              
+              let summary = item.description.replace(/<[^>]+>/g, '').trim();
+              if (summary.length > 150) {
+                summary = summary.substring(0, 150) + "...";
+              }
+              
+              const dateObj = new Date(item.pubDate);
+              const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+              
+              return {
+                title: item.title,
+                summary: summary,
+                date: dateStr,
+                timestamp: dateObj.getTime(),
+                url: item.link,
+                readingTime: readingTime,
+              };
+            });
+            allPosts = [...allPosts, ...mediumPosts];
+          }
+        }
+
+        if (devtoRes && devtoRes.ok) {
+          const devtoData = await devtoRes.json();
+          if (Array.isArray(devtoData)) {
+            const devtoPosts = devtoData.map((item: any) => {
+              let summary = (item.description || "").trim();
+              if (summary.length > 150) {
+                summary = summary.substring(0, 150) + "...";
+              }
+              
+              const dateObj = new Date(item.published_timestamp);
+              const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+              
+              return {
+                title: item.title,
+                summary: summary,
+                date: dateStr,
+                timestamp: dateObj.getTime(),
+                url: item.url,
+                readingTime: item.reading_time_minutes ? `${item.reading_time_minutes} min read` : undefined,
+              };
+            });
+            allPosts = [...allPosts, ...devtoPosts];
+          }
+        }
+
+        allPosts.sort((a, b) => b.timestamp - a.timestamp);
+        
+        // Remove the internal timestamp property to match Post type and slice to max 4
+        const latestPosts: Post[] = allPosts.slice(0, 4).map(({ timestamp, ...rest }) => rest);
+
+        if (latestPosts.length > 0) {
+          setPosts(latestPosts);
         }
       } catch (error) {
-        console.error("Error fetching Medium posts:", error);
+        console.error("Error fetching posts:", error);
       } finally {
         setLoading(false);
       }
