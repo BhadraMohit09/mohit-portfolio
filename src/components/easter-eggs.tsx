@@ -843,7 +843,7 @@ const EasterEggs = () => {
         });
 
         window.setTimeout(() => {
-          navigate("/resume");
+          navigate("/experience");
           setIsTerminalOpen(false);
         }, 800);
 
@@ -989,7 +989,7 @@ const EasterEggs = () => {
 
       {isTerminalOpen && (
         <div className="fixed inset-0 z-[120] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-[#0c0c0c] border border-gray-700/50 w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden flex flex-col h-[600px] ring-1 ring-white/10">
+          <div className="bg-[#0c0c0c] border border-gray-700/50 w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden flex flex-col h-[80vh] md:h-[600px] max-h-[600px] ring-1 ring-white/10">
             {/* Terminal Header */}
 
             <div className="bg-[#1e1e1e] px-4 py-3 flex justify-between items-center select-none border-b border-gray-800">
@@ -1010,8 +1010,9 @@ const EasterEggs = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-xs font-mono text-gray-400 bg-black/20 px-3 py-1 rounded border border-white/5">
-                  <Terminal className="w-3 h-3" />
-                  mohit-bhadra — bash — 80x24
+                  <Terminal className="w-3 h-3 hidden sm:block" />
+                  <span className="hidden sm:inline">mohit-bhadra — bash — 80x24</span>
+                  <span className="sm:hidden">bash</span>
                 </div>
               </div>
 
@@ -1029,36 +1030,38 @@ const EasterEggs = () => {
 
             {/* Quick Actions Bar */}
 
-            <div className="bg-[#181818] px-4 py-2.5 border-b border-gray-800 flex flex-wrap gap-2.5 items-center shadow-inner">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1.5">
+            <div className="bg-[#181818] px-4 py-2.5 border-b border-gray-800 flex flex-wrap gap-2.5 items-center shadow-inner overflow-x-auto">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1.5 shrink-0">
                 <Cpu className="w-3 h-3 text-purple-500" />
                 Exec:
               </span>
 
-              {quickActions.map((btn) => (
-                <button
-                  type="button"
-                  key={btn.cmd}
-                  onClick={() =>
-                    runCommand(btn.cmd)
-                  }
-                  className="flex items-center gap-1.5 bg-[#252526] hover:bg-purple-600/20 text-gray-300 hover:text-purple-300 border border-gray-700/50 hover:border-purple-500/50 px-3 py-1.5 rounded text-xs font-mono transition-all"
-                >
-                  {btn.icon}
-                  {btn.label}
-                </button>
-              ))}
+              <div className="flex gap-2.5 flex-wrap">
+                {quickActions.map((btn) => (
+                  <button
+                    type="button"
+                    key={btn.cmd}
+                    onClick={() =>
+                      runCommand(btn.cmd)
+                    }
+                    className="flex items-center gap-1.5 bg-[#252526] hover:bg-purple-600/20 text-gray-300 hover:text-purple-300 border border-gray-700/50 hover:border-purple-500/50 px-3 py-1.5 rounded text-xs font-mono transition-all shrink-0"
+                  >
+                    {btn.icon}
+                    {btn.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Logs Body */}
 
-            <div className="flex-1 p-5 font-mono text-[13px] leading-relaxed overflow-y-auto bg-[#0c0c0c] text-gray-300 scroll-smooth">
+            <div className="flex-1 p-3 md:p-5 font-mono text-xs md:text-[13px] leading-relaxed overflow-y-auto bg-[#0c0c0c] text-gray-300 scroll-smooth break-words">
               <div className="space-y-3 pb-4">
                 {terminalLogs.map(
                   (log, idx) => (
                     <div
                       key={idx}
-                      className="flex gap-3"
+                      className="flex gap-2 md:gap-3"
                     >
                       {log.type === "user" && (
                         <span className="text-purple-400 shrink-0">
@@ -1085,7 +1088,7 @@ const EasterEggs = () => {
                       )}
 
                       <div
-                        className={`whitespace-pre-wrap ${
+                        className={`whitespace-pre-wrap break-all md:break-normal ${
                           log.type === "user"
                             ? "text-gray-100"
                             : log.type === "err"
@@ -1109,10 +1112,13 @@ const EasterEggs = () => {
 
             <form
               onSubmit={handleTerminalSubmit}
-              className="bg-[#1e1e1e] p-4 flex items-center gap-3 border-t border-gray-800 shadow-[0_-10px_20px_rgba(0,0,0,0.2)]"
+              className="bg-[#1e1e1e] p-3 md:p-4 flex items-center gap-2 md:gap-3 border-t border-gray-800 shadow-[0_-10px_20px_rgba(0,0,0,0.2)]"
             >
-              <span className="text-green-400 font-mono font-bold text-sm">
+              <span className="text-green-400 font-mono font-bold text-xs md:text-sm shrink-0 hidden sm:inline">
                 mohit@portfolio:~$
+              </span>
+              <span className="text-green-400 font-mono font-bold text-xs shrink-0 sm:hidden">
+                ~$
               </span>
 
               <input
@@ -1121,14 +1127,14 @@ const EasterEggs = () => {
                 onChange={(e) =>
                   setTerminalInput(e.target.value)
                 }
-                placeholder="Type 'help' to see all commands..."
-                className="flex-1 bg-transparent border-none outline-none text-white font-mono text-sm placeholder-gray-600 focus:ring-0"
+                placeholder="Type 'help'..."
+                className="flex-1 min-w-0 bg-transparent border-none outline-none text-white font-mono text-xs md:text-sm placeholder-gray-600 focus:ring-0"
                 autoFocus
               />
 
               <button
                 type="submit"
-                className="bg-[#2d2d2d] hover:bg-[#3d3d3d] text-white px-4 py-2 rounded-md text-xs font-mono font-bold transition-all border border-gray-700"
+                className="bg-[#2d2d2d] hover:bg-[#3d3d3d] text-white px-3 md:px-4 py-1.5 md:py-2 rounded-md text-xs font-mono font-bold transition-all border border-gray-700 shrink-0"
               >
                 Enter
               </button>
