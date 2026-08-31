@@ -125,7 +125,7 @@ export function SolarSystem() {
   const tooltip = useMemo(() => hoveredBody ? { name: hoveredBody, ...QUIPS[hoveredBody] } : null, [hoveredBody]);
 
   return (
-    <div id="github">
+    <div id="space">
       <SectionHeader title="Solar System" />
       <Shell className="px-4 py-8 sm:px-8 overflow-hidden">
         <motion.div

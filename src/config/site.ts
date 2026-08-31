@@ -39,8 +39,9 @@ export const site = {
 
   profileImages: [
     "/astronaut.jpeg",
-    "/profile.jpg",
-    "/profile2.png",
+    "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80",
   ],
 
   bannerImage: "/banner-gradient.jpg",
