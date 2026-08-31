@@ -6,24 +6,36 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const QUOTES = [
   {
-    text: "When something is important enough, you do it even if the odds are not in your favor.",
-    author: "Elon Musk",
+    text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+    author: "Martin Fowler",
   },
   {
-    text: "The biggest risk is not taking any risk.",
-    author: "Mark Zuckerberg",
+    text: "Talk is cheap. Show me the code.",
+    author: "Linus Torvalds",
   },
   {
-    text: "The people who are crazy enough to think they can change the world are the ones who do.",
-    author: "Steve Jobs",
+    text: "Programs must be written for people to read, and only incidentally for machines to execute.",
+    author: "Harold Abelson",
   },
   {
-    text: "I’ve decided to become the Pirate King. If I die trying, then at least I die fighting for my dream.",
-    author: "Monkey D. Luffy",
+    text: "The best error message is the one that never shows up.",
+    author: "Thomas Fuchs",
   },
   {
-    text: "If you don't like your destiny, don't accept it.",
-    author: "Naruto Uzumaki",
+    text: "First, solve the problem. Then, write the code.",
+    author: "John Johnson",
+  },
+  {
+    text: "Make it work, make it right, make it fast.",
+    author: "Kent Beck",
+  },
+  {
+    text: "Simplicity is the soul of efficiency.",
+    author: "Austin Freeman",
+  },
+  {
+    text: "Code is like humor. When you have to explain it, it's bad.",
+    author: "Cory House",
   },
 ];
 

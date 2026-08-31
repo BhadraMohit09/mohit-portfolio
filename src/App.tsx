@@ -13,8 +13,10 @@ import { Experience } from "@/sections/Experience";
 import { TechStack } from "@/sections/TechStack";
 import { Writing } from "@/sections/Writing";
 import { GithubActivity } from "@/sections/GithubActivity";
+import { SolarSystem } from "@/sections/SolarSystem";
 import { CommandPalette } from "@/components/command-palette";
 import { WritingPage } from "@/pages/WritingPage";
+import { GamesPage } from "@/pages/GamesPage";
 import { Konami } from "@/components/konami";
 import { Analytics } from "@vercel/analytics/react";
 import FakeErrorSplash from "./FakeErrorSplash";
@@ -57,7 +59,7 @@ function MainLayout({ onOpenPalette }: { onOpenPalette: () => void }) {
       <Experience />
       <TechStack />
       <Writing />
-      <GithubActivity />
+      <SolarSystem />
     </>
   );
 }
@@ -119,6 +121,7 @@ export function App() {
                   <Route path="/" element={<MainLayout onOpenPalette={() => setPaletteOpen(true)} />} />
                   <Route path="/projects" element={<Projects isSearchable={true} />} />
                   <Route path="/experience" element={<Experience />} />
+                  <Route path="/games" element={<GamesPage />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/writing" element={<WritingPage />} />
                 </Routes>

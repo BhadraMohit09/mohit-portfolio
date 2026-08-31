@@ -5,7 +5,15 @@ import { Globe, ChevronDown, ChevronUp } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
 
 const getProjectGradient = (index: number) => {
-  return "from-[var(--chip)] via-[var(--card)] to-[var(--bg)]/40";
+  const gradients = [
+    "from-indigo-950 via-[var(--card)] to-[var(--bg)]",
+    "from-emerald-950 via-[var(--card)] to-[var(--bg)]",
+    "from-rose-950 via-[var(--card)] to-[var(--bg)]",
+    "from-amber-950 via-[var(--card)] to-[var(--bg)]",
+    "from-sky-950 via-[var(--card)] to-[var(--bg)]",
+    "from-violet-950 via-[var(--card)] to-[var(--bg)]",
+  ];
+  return gradients[index % gradients.length];
 };
 
 export function ProjectCard({ project: p, index = 0 }: { project: Project; index?: number }) {
@@ -13,112 +21,107 @@ export function ProjectCard({ project: p, index = 0 }: { project: Project; index
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="group flex flex-col justify-between rounded-xl border border-[var(--line)] bg-[var(--card)] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--soft)] hover:shadow-md h-full">
+    <div className="group flex flex-col justify-between rounded-xl border border-[var(--line)] bg-[var(--card)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--soft)] hover:shadow-md h-full overflow-hidden">
       <div>
-        {/* Angled Screenshot Preview Canvas Box */}
-        <div className={`relative mb-4 h-48 w-full overflow-hidden rounded-lg border border-[var(--line)] bg-gradient-to-br ${getProjectGradient(index)} p-3 flex flex-col justify-between`}>
-          <div className="bg-stripes absolute inset-0 opacity-20 pointer-events-none" />
-
-          {/* Viewfinder Reticles (Camera REC / ISO) */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10 font-mono text-[9px] text-white">
-            <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l border-white/70" />
-            <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-white/70" />
-            <div className="absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b border-l border-white/70" />
-            <div className="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b border-r border-white/70" />
-            <div className="absolute top-2.5 left-7 flex items-center gap-1 text-[8px] font-semibold text-white/80">
-              <span className="size-1.5 rounded-full bg-rose-500 animate-pulse" /> REC
+        {/* Full-bleed Image Preview */}
+        <div className="relative h-48 w-full overflow-hidden bg-[var(--chip)]">
+          {p.image && !imgError ? (
+            <>
+              <img
+                src={p.image}
+                alt={`${p.title} preview`}
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                onError={() => setImgError(true)}
+              />
+              {/* Gradient fade at bottom for badge legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+            </>
+          ) : (
+            <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${getProjectGradient(index)} relative`}>
+              <div className="bg-stripes absolute inset-0 opacity-20 pointer-events-none" />
+              <span className="font-serif text-2xl text-[var(--fg)] opacity-90 relative z-10">{p.title}</span>
             </div>
-            <div className="absolute top-2.5 right-7 text-[8px] text-white/80 font-semibold">
-              ISO 400
-            </div>
-          </div>
+          )}
 
-          {/* Top Badges Row */}
-          <div className="relative z-20 flex items-center justify-between gap-2">
+          {/* Badges overlaid at image bottom */}
+          <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              {p.status ? (
-                <span className="rounded bg-amber-500/20 border border-amber-500/40 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md">
-                  • {p.status}
-                </span>
-              ) : (
-                <span className="rounded bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-emerald-300 backdrop-blur-md flex items-center gap-1">
+              {p.status === "Live" || !p.status ? (
+                <span className="rounded bg-emerald-500/25 border border-emerald-500/50 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-emerald-300 backdrop-blur-sm flex items-center gap-1">
                   <span className="relative flex size-1.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
                   </span>
-                  Live
+                  {p.status ?? "Live"}
+                </span>
+              ) : p.status === "In Development" ? (
+                <span className="rounded bg-sky-500/25 border border-sky-500/50 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-sky-300 backdrop-blur-sm">
+                  ◎ {p.status}
+                </span>
+              ) : (
+                <span className="rounded bg-amber-500/25 border border-amber-500/50 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-sm">
+                  • {p.status}
                 </span>
               )}
             </div>
 
             {p.featured && (
-              <span className="rounded bg-amber-400/10 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-amber-500 border border-amber-500/30">
+              <span className="rounded bg-amber-400/15 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-amber-400 border border-amber-500/30 backdrop-blur-sm">
                 Featured
               </span>
             )}
           </div>
+        </div>
 
-          {/* Angled Screenshot Image */}
-          {p.image && !imgError ? (
-            <div className="absolute -right-6 -bottom-3 w-56 h-32 sm:-right-12 sm:-bottom-5 sm:w-72 sm:h-40 rounded-lg border-4 border-[var(--bg)]/40 shadow-xl overflow-hidden group-hover:-right-4 group-hover:-bottom-1 sm:group-hover:-right-9 sm:group-hover:-bottom-2 transition-all duration-300 pointer-events-none">
-              <img
-                src={p.image}
-                alt={`${p.title} preview`}
-                className="w-full h-full object-cover object-top"
-                onError={() => setImgError(true)}
-              />
+        {/* Card Body */}
+        <div className="p-5">
+          {/* Project Header Info */}
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-[16px] font-semibold tracking-wide text-[var(--fg)] group-hover:text-[var(--fg)]">
+              {p.title}
+            </h3>
+            <span className="font-mono text-xs text-[var(--soft)] shrink-0">{p.year}</span>
+          </div>
+
+          <p className="mt-2 text-[13px] leading-relaxed text-[var(--muted)] line-clamp-4">
+            {p.blurb}
+          </p>
+
+          {/* Collapsible Details Drawer */}
+          {p.story && (
+            <div className="mt-3">
+              <button
+                type="button"
+                onClick={() => setShowDetails(!showDetails)}
+                className="flex items-center gap-1 font-mono text-[10px] text-[var(--soft)] hover:text-[var(--fg)] cursor-pointer outline-none"
+              >
+                {showDetails ? "Hide engineering details" : "Show engineering details"}
+                {showDetails ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+              </button>
+              <AnimatePresence initial={false}>
+                {showDetails && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-2.5 rounded-lg border border-[var(--line)]/50 bg-[var(--chip)]/60 p-3 font-sans text-[12px] leading-relaxed text-[var(--muted)] border-l-2 border-l-[var(--soft)] space-y-1.5">
+                      {p.story.split("\n\n").map((para, idx) => (
+                        <p key={idx}>{para}</p>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-          ) : (
-            <div className="font-serif text-2xl text-[var(--fg)] self-end opacity-90">{p.title}</div>
           )}
         </div>
-
-        {/* Project Header Info */}
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-[16px] font-semibold tracking-wide text-[var(--fg)] group-hover:text-[var(--fg)]">
-            {p.title}
-          </h3>
-          <span className="font-mono text-xs text-[var(--soft)]">{p.year}</span>
-        </div>
-
-        <p className="mt-2 text-[13px] leading-relaxed text-[var(--muted)] line-clamp-4">
-          {p.blurb}
-        </p>
-
-        {/* Collapsible Details Drawer */}
-        {p.story && (
-          <div className="mt-3">
-            <button
-              type="button"
-              onClick={() => setShowDetails(!showDetails)}
-              className="flex items-center gap-1 font-mono text-[10px] text-[var(--soft)] hover:text-[var(--fg)] cursor-pointer outline-none"
-            >
-              {showDetails ? "Hide engineering details" : "Show engineering details"}
-              {showDetails ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-            </button>
-            <AnimatePresence initial={false}>
-              {showDetails && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <div className="mt-2.5 rounded-lg border border-[var(--line)]/50 bg-[var(--chip)]/60 p-3 font-sans text-[12px] leading-relaxed text-[var(--muted)] border-l-2 border-l-[var(--soft)] space-y-1.5">
-                    {p.story.split("\n\n").map((para, idx) => (
-                      <p key={idx}>{para}</p>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        )}
       </div>
 
       {/* Tech Pills & Direct Links */}
-      <div className="mt-4 flex items-center justify-between gap-3 pt-3 border-t border-[var(--line)]/50">
+      <div className="mx-5 mb-5 flex items-center justify-between gap-3 pt-3 border-t border-[var(--line)]/50">
         <div className="flex flex-wrap gap-1.5">
           {p.stack.map((t) => (
             <span

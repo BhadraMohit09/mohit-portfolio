@@ -7,7 +7,7 @@ const INDEX_ITEMS = [
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "writing", label: "Writing" },
-  { id: "github", label: "GitHub" },
+  { id: "github", label: "Space" },
 ];
 
 export function SideIndex() {

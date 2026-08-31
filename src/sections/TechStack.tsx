@@ -1,17 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Shell, SectionHeader } from "@/components/Layout";
 import { site } from "@/config/site";
 import { Icon } from "@iconify/react";
-
-const CATEGORY_ICONS: Record<string, string> = {
-  All: "lucide:layers",
-  Languages: "lucide:code-2",
-  Backend: "lucide:server",
-  Frontend: "lucide:layout",
-  Databases: "lucide:database",
-  "DevOps & Tools": "lucide:terminal",
-};
 
 const SKILL_ICONS: Record<string, string> = {
   TypeScript: "logos:typescript-icon",
@@ -60,88 +49,51 @@ const SKILL_ICONS: Record<string, string> = {
   Redux: "logos:redux",
 };
 
-const skillCategories: Record<string, string[]> = {
-  Languages: ["TypeScript", "JavaScript", "Python", "C#", ".NET Core"],
-  Frontend: ["React", "Next.js", "Tailwind CSS", "Shadcn UI", "Figma", "Vite", "Framer Motion", "PWA", "Redux"],
-  Backend: ["Node.js", "Express.js", "ASP.NET Core", "REST APIs", "JWT", "OAuth2", "WebSockets", "GraphQL", "Flask", "Nginx"],
-  Databases: ["PostgreSQL", "MongoDB", "SQL Server", "Redis", "Prisma", "Supabase", "Firebase"],
-  "DevOps & Tools": ["Git", "GitHub", "GitHub Actions", "Postman", "Vercel", "Docker", "AWS", "Linux", "Web Workers", "Web Crypto API", "Machine Learning", "Scikit-learn"],
-};
+function SkillBadge({ skill }: { skill: string }) {
+  const iconName = SKILL_ICONS[skill] || "lucide:code-2";
+  const isShadcn = iconName === "simple-icons:shadcnui";
+  return (
+    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-2 font-mono text-[12px] text-[var(--muted)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--fg)] hover:bg-[var(--fg)] hover:text-[var(--bg)] shadow-xs group cursor-default select-none">
+      <Icon
+        icon={iconName}
+        width={16}
+        height={16}
+        className={`size-4 shrink-0 transition-colors ${isShadcn ? "text-current" : ""} group-hover:filter group-hover:brightness-110`}
+      />
+      {skill}
+    </span>
+  );
+}
+
+function MarqueeRow({ skills, reverse = false }: { skills: string[]; reverse?: boolean }) {
+  const doubled = [...skills, ...skills];
+  return (
+    <div className="overflow-hidden w-full" aria-hidden>
+      <div className={`flex gap-3 w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
+        {doubled.map((skill, i) => (
+          <SkillBadge key={`${skill}-${i}`} skill={skill} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function TechStack() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-
   if (!site.skills.length) return null;
 
-  const categories = ["All", "Languages", "Frontend", "Backend", "Databases", "DevOps & Tools"];
-
-  const filteredSkills = activeCategory === "All"
-    ? site.skills
-    : site.skills.filter((skill) => skillCategories[activeCategory]?.includes(skill));
+  const skills = site.skills as unknown as string[];
+  const mid = Math.ceil(skills.length / 2);
+  const row1 = skills.slice(0, mid);
+  const row2 = skills.slice(mid);
 
   return (
     <div id="skills">
-      <SectionHeader
-        title="Tech Stack"
-        aside={
-          <span className="hidden font-mono text-[10px] tracking-wider text-[var(--soft)] sm:inline">
-            ( select tab to filter )
-          </span>
-        }
-      />
-      <Shell className="px-6 py-6 sm:px-8">
-        {/* Category Tabs */}
-        <div className="flex flex-wrap gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--chip)] p-1">
-          {categories.map((cat) => {
-            const iconName = CATEGORY_ICONS[cat] || "lucide:layers";
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium transition-all duration-200 cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-[var(--fg)] text-[var(--bg)] shadow-sm font-semibold"
-                    : "text-[var(--muted)] hover:bg-[var(--hover)] hover:text-[var(--fg)]"
-                }`}
-              >
-                <Icon icon={iconName} width={14} height={14} className="size-3.5" />
-                {cat}
-              </button>
-            );
-          })}
+      <SectionHeader title="Tech Stack" />
+      <Shell className="px-0 py-6 overflow-hidden">
+        <div className="flex flex-col gap-4">
+          <MarqueeRow skills={row1} reverse={false} />
+          <MarqueeRow skills={row2} reverse={true} />
         </div>
-
-        {/* Skill Items Grid */}
-        <motion.div layout className="mt-6 flex flex-wrap gap-2.5">
-          <AnimatePresence mode="popLayout">
-            {filteredSkills.map((skill) => {
-              const iconName = SKILL_ICONS[skill] || "lucide:code-2";
-              const isShadcn = iconName === "simple-icons:shadcnui";
-              return (
-                <motion.span
-                  key={skill}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.2, type: "spring", stiffness: 300, damping: 25 }}
-                  className="flex cursor-default items-center gap-2 rounded-md border border-[var(--line)] bg-[var(--card)] px-3 py-1.5 font-mono text-[12px] text-[var(--muted)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--fg)] hover:bg-[var(--fg)] hover:text-[var(--bg)] shadow-xs group"
-                >
-                  <Icon 
-                    icon={iconName} 
-                    width={16}
-                    height={16}
-                    className={`size-4 shrink-0 transition-colors ${
-                      isShadcn ? "text-current" : ""
-                    } group-hover:filter group-hover:brightness-110`} 
-                  />
-                  {skill}
-                </motion.span>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
       </Shell>
     </div>
   );

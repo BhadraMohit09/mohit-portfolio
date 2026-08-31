@@ -158,7 +158,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend", "Fullstack"],
     },
@@ -189,7 +189,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -220,7 +220,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend", "Fullstack"],
     },
@@ -251,7 +251,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -282,7 +282,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -312,7 +312,7 @@ export const site = {
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Frontend"],
     },
@@ -401,7 +401,7 @@ export const site = {
       status: "In Development",
 
       image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80&auto=format&fit=crop",
 
       categories: ["Fullstack", "Backend"],
     },
