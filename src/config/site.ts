@@ -165,34 +165,65 @@ export const site = {
     },
 
     {
-      title: "FileForge",
+      title: "Bandobast",
 
       blurb:
-        "Universal client-side document and file transformation platform for converting PDFs, processing images, formatting JSON, and generating secure files directly in the browser.",
+        "Civic intelligence and community care platform enabling citizens to report, track, and resolve local municipal issues like water supply, power cuts, sanitation, and road repairs.",
 
       story:
-        "A privacy-focused browser-based file transformation platform designed to process files locally. The application focuses on speed, convenience, and privacy by performing core transformations directly on the client.",
+        "A hyper-local civic management and complaint resolution platform built to bridge the gap between citizens and municipal administration. Citizens can quickly log grievances for civil infrastructure—including road maintenance, electricity outages, water shortages, and waste management—with real-time status updates and transparency.",
 
       stack: [
+        "Next.js",
         "React",
-        "Vite",
+        "TypeScript",
         "Tailwind CSS",
-        "Web Workers",
       ],
 
       year: "2026",
 
       links: {
-        live: "https://file-forge-silk.vercel.app/",
+        live: "https://getbandobast.vercel.app/",
       },
 
       featured: true,
       status: "Live",
 
       image:
-        "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=800&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?w=800&q=80&auto=format&fit=crop",
 
-      categories: ["Frontend"],
+      categories: ["Frontend", "Fullstack"],
+    },
+
+    {
+      title: "Vinayak Laundry",
+
+      blurb:
+        "Modern digital garment care and on-demand laundry web application offering streamlined service bookings, pickup & delivery scheduling, and live order tracking.",
+
+      story:
+        "A streamlined web application crafted for professional garment care, dry cleaning, and fabric maintenance services. Built with a customer-first approach, it allows users to browse service offerings, schedule door-step pickups and deliveries, and manage laundry orders effortlessly.",
+
+      stack: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+      ],
+
+      year: "2026",
+
+      links: {
+        live: "https://vinayaklaundry.vercel.app/",
+      },
+
+      featured: true,
+      status: "Live",
+
+      image:
+        "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=800&q=80&auto=format&fit=crop",
+
+      categories: ["Frontend", "Fullstack"],
     },
 
     {
